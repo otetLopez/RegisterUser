@@ -1,8 +1,10 @@
 package com.f19.rosette_768425_ft;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.DataSetObserver;
 import android.media.Image;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,15 +14,14 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class CustomAdapter implements ListAdapter {
+public class CustomAdapter implements ListAdapter  {
     private ArrayList<Person> personLists;
+    private Context context;
 
     public CustomAdapter(Context context, ArrayList<Person> personLists) {
         this.personLists = personLists;
         this.context = context;
     }
-
-    private Context context;
 
     @Override
     public boolean areAllItemsEnabled() {
@@ -64,21 +65,30 @@ public class CustomAdapter implements ListAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        Person person = personLists.get(i);
+        final Person person = personLists.get(i);
         if(view == null) {
             LayoutInflater layoutInflater = LayoutInflater.from(context);
             view = layoutInflater.inflate(R.layout.list_person, null);
-            view.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                }
-            });
 
             TextView textView = view.findViewById(R.id.name);
             ImageView img = view.findViewById(R.id.icon);
+            TextView email = view.findViewById(R.id.email);
+            TextView phone = view.findViewById(R.id.phone);
             textView.setText(person.getName());
             img.setImageResource(person.getImg());
+            email.setText(person.getEmail());
+            phone.setText(String.valueOf(person.getPhone()));
 
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.i("Clicked", "CustomAdapter: clicked " + person.getName());
+                    Intent intent = new Intent(context, PersonDetailsActivity.class);
+                    intent.putExtra("detail", person);
+                    context.startActivity(intent);
+
+                }
+            });
         }
         return view;
     }

@@ -2,7 +2,7 @@ package com.f19.rosette_768425_ft;
 
 import androidx.annotation.NonNull;
 
-public class Person {
+public class Person implements java.io.Serializable {
     private String name;
     private String email;
     private Long phone;
