@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -45,6 +46,15 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, PersonDetailsActivity.class);
                 intent.putExtra("detail", persons.get(i));
                 startActivity(intent);
+            }
+        });
+
+        Button btn = findViewById(R.id.btn_add);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
+                startActivityForResult(intent, Constants.INTENT_REQUEST_CODE_ADD_USER);
             }
         });
 
