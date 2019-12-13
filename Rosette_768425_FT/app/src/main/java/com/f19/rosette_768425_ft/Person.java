@@ -6,11 +6,13 @@ public class Person {
     private String name;
     private String email;
     private Long phone;
+    private int img;
 
-    public Person(String name, String email, Long phone) {
+    public Person(String name, String email, Long phone, int img) {
         this.name = name;
         this.email = email;
         this.phone = phone;
+        this.img = img;
     }
 
     public String getName() {
@@ -35,6 +37,14 @@ public class Person {
 
     public void setPhone(Long phone) {
         this.phone = phone;
+    }
+
+    public int getImg() {
+        return img;
+    }
+
+    public void setImg(int img) {
+        this.img = img;
     }
 
     @NonNull

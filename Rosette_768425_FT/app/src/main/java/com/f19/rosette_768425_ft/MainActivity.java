@@ -18,11 +18,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         if(Constants.ENABLE_DEBUG) {
-            Person p1 = new Person("Person1", "email@email.com", (long) 1234567891);
-            Person p2 = new Person("Person2", "email@email.com", (long) 1234567891);
-            Person p3 = new Person("Person3", "email@email.com", (long) 1234567891);
-            Person p4 = new Person("Person4", "email@email.com", (long) 1234567891);
-            Person p5 = new Person("Person5", "email@email.com", (long) 1234567891);
+            Person p1 = new Person("Person1", "email@email.com", (long) 1234567891, R.drawable.icon01_01);
+            Person p2 = new Person("Person2", "email@email.com", (long) 1234567891, R.drawable.icon01_02);
+            Person p3 = new Person("Person3", "email@email.com", (long) 1234567891, R.drawable.icon01_03);
+            Person p4 = new Person("Person4", "email@email.com", (long) 1234567891, R.drawable.icon01_04);
+            Person p5 = new Person("Person5", "email@email.com", (long) 1234567891, R.drawable.icon01_05);
 
             persons.add(p1);
             persons.add(p2);
@@ -37,11 +37,22 @@ public class MainActivity extends AppCompatActivity {
 
     private void updateList() {
         ListView listView  = findViewById(R.id.list_names);
-        ArrayList<String> names = new ArrayList<>();
-        for(int i=0; i<persons.size(); ++i) {
-            names.add(persons.get(i).getName());
-        }
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_list_item_1, names);
-        listView.setAdapter(adapter);
+//        ArrayList<String> names = new ArrayList<>();
+//        for(int i=0; i<persons.size(); ++i) {
+//            names.add(persons.get(i).getName());
+//
+//        }
+        //ArrayAdapter<String> adapter = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_list_item_1, names);
+        //listView.setAdapter(adapter);
+
+//        ArrayList<Person> personLists = new ArrayList<>();
+//        for(int i=0; i<persons.size(); ++i) {
+//            PersonList newPerson = new PersonList(persons.get(i).getName(), persons.get(i).getImg());
+//            personLists.add(newPerson);
+//
+//        }
+        CustomAdapter customAdapter = new CustomAdapter(MainActivity.this, persons);
+        listView.setAdapter(customAdapter);
+
     }
 }
