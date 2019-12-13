@@ -9,8 +9,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.util.Random;
-
 public class RegisterActivity extends AppCompatActivity {
 
     @Override
@@ -32,8 +30,8 @@ public class RegisterActivity extends AppCompatActivity {
                     // Get image
                     Constants constant = new Constants();
                     Person person = new Person(name.getText().toString(),email.getText().toString(), Long.valueOf(phone.getText().toString()),
-                            Constants.Icons[constant.getRandom()]);
-                    Intent intent = new Intent(RegisterActivity.this, PersonDetailsActivity.class);//VerificicationActivity.class);
+                            Constants.Icons[constant.getRandom(Constants.ICON_COUNT)]);
+                    Intent intent = new Intent(RegisterActivity.this, VerificationActivity.class);
                     intent.putExtra("detail", person);
                     startActivity(intent);
                 }

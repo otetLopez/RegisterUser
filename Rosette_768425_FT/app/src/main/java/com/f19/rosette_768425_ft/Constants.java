@@ -6,6 +6,11 @@ import java.util.Random;
 public class Constants {
     public final static boolean ENABLE_DEBUG = true;
     public final static int INTENT_REQUEST_CODE_ADD_USER = 1;
+    public final static int ICON_COUNT = 30;
+    public final static int TRAFFIC_IMAGES_COUNT = 9;
+
+    public final static int Images[] = {R.drawable.img1, R.drawable.img2, R.drawable.img3, R.drawable.img4,
+            R.drawable.img5, R.drawable.img6, R.drawable.img7, R.drawable.img8, R.drawable.img8};
 
     public final static int Icons[] = {R.drawable.icon01_01,R.drawable.icon01_02,R.drawable.icon01_03,R.drawable.icon01_04,R.drawable.icon01_05,
             R.drawable.icon01_06, R.drawable.icon01_07, R.drawable.icon01_08, R.drawable.icon01_09, R.drawable.icon01_10,
@@ -14,9 +19,9 @@ public class Constants {
             R.drawable.icon01_21,R.drawable.icon01_22,R.drawable.icon01_23,R.drawable.icon01_24,R.drawable.icon01_25,
             R.drawable.icon01_26,R.drawable.icon01_27,R.drawable.icon01_28,R.drawable.icon01_29,R.drawable.icon01_30};
 
-    public int getRandom() {
+    public int getRandom(int max) {
         Random randnum = new Random();
-        return randnum.nextInt(Icons.length);
+        return randnum.nextInt(max-1);
     }
 
 
