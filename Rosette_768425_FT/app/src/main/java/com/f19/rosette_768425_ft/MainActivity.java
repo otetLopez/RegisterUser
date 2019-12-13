@@ -16,6 +16,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     ArrayList<Person> persons = new ArrayList<>();
+    boolean flag = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,26 @@ public class MainActivity extends AppCompatActivity {
             persons.add(p4);
             persons.add(p5);
         }
+
+        Intent intent = getIntent();
+        if(intent.getExtras() != null)
+        {
+            Person person = (Person) intent.getExtras().get("addNew");
+            if (person != null)
+                persons.add(person);
+        }
+
+//       // if(flag == true) {
+//            Intent intent = getIntent();
+//            if(intent.getFlags() == Intent.FLAG_ACTIVITY_NEW_TASK) {
+//            if (intent != null) {
+//            Person person = (Person) intent.getExtras().get("addNew");
+//            if (person != null)
+//                persons.add(person);
+//
+//            flag = false;
+//            } }
+
         updateList();
         ListView listView = findViewById(R.id.list_names);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -53,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                flag = true;
                 Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
                 startActivity(intent);
                 //startActivityForResult(intent, Constants.INTENT_REQUEST_CODE_ADD_USER);

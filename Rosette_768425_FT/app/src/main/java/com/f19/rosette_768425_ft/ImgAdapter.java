@@ -41,7 +41,4 @@ public class ImgAdapter extends BaseAdapter {
 
         return view;
     }
-
-
-
 }
