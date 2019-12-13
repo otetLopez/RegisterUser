@@ -82,7 +82,7 @@ public class CustomAdapter implements ListAdapter  {
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Log.i("Clicked", "CustomAdapter: clicked " + person.getName());
+                    Log.i("Clicked", "CustomAdapter: clicked " + person.getName() + " with " + person.getImg());
                     Intent intent = new Intent(context, PersonDetailsActivity.class);
                     intent.putExtra("detail", person);
                     context.startActivity(intent);

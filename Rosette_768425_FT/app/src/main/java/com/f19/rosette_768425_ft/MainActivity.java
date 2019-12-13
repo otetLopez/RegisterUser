@@ -54,7 +54,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
-                startActivityForResult(intent, Constants.INTENT_REQUEST_CODE_ADD_USER);
+                startActivity(intent);
+                //startActivityForResult(intent, Constants.INTENT_REQUEST_CODE_ADD_USER);
             }
         });
 
