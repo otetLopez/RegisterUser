@@ -23,7 +23,8 @@ public class VerificationActivity extends AppCompatActivity {
 
         GridView gridView = findViewById(R.id.gridView);
 
-        final ImgAdapter iconAdapter = new ImgAdapter(this, Constants.Images);
+        final int[] images = Constants.RandomizeArray(Constants.Images);
+        final ImgAdapter iconAdapter = new ImgAdapter(this, images);
         gridView.setAdapter(iconAdapter);
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

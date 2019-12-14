@@ -11,7 +11,7 @@ public class Constants {
     public final static int TRAFFIC_IMAGES_COUNT = 9;
 
     public final static int Images[] = {R.drawable.img1, R.drawable.img2, R.drawable.img3, R.drawable.img4,
-            R.drawable.img5, R.drawable.img6, R.drawable.img7, R.drawable.img8, R.drawable.img8};
+            R.drawable.img5, R.drawable.img6, R.drawable.img7, R.drawable.img8, R.drawable.img9};
 
     public final static int Icons[] = {R.drawable.icon01_01,R.drawable.icon01_02,R.drawable.icon01_03,R.drawable.icon01_04,R.drawable.icon01_05,
             R.drawable.icon01_06, R.drawable.icon01_07, R.drawable.icon01_08, R.drawable.icon01_09, R.drawable.icon01_10,
@@ -23,6 +23,18 @@ public class Constants {
     public int getRandom(int max) {
         Random randnum = new Random();
         return randnum.nextInt(max-1);
+    }
+
+    public static int[] RandomizeArray(int[] array){
+        Random rgen = new Random();  // Random number generator
+
+        for (int i=0; i<array.length; i++) {
+            int randomPosition = rgen.nextInt(array.length);
+            int temp = array[i];
+            array[i] = array[randomPosition];
+            array[randomPosition] = temp;
+        }
+        return array;
     }
 
 
