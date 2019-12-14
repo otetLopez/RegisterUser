@@ -1,5 +1,7 @@
 package com.f19.rosette_768425_ft;
 
+import java.util.ArrayList;
+
 import androidx.annotation.NonNull;
 
 public class Person implements java.io.Serializable {
@@ -55,5 +57,7 @@ public class Person implements java.io.Serializable {
                 "\nEmail Ad\t\t\t: " + this.email;
         return details;
     }
+
+    // public ArrayList<Person> people = new ArrayList<>();
 
 }

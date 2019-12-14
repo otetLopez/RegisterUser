@@ -4,6 +4,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -18,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     ArrayList<Person> persons = new ArrayList<>();
     boolean flag = false;
+    boolean mIsDualPane = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,10 +56,15 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Log.i("Clicked", "You clicked position " + i);
 
+                if(mIsDualPane) {
+                    PersonDetailsFragment descriptionFragment = (PersonDetailsFragment) getSupportFragmentManager().findFragmentById(R.id.description_frag);
+                    descriptionFragment.displayDetails(i, persons.get(i));
 
-                Intent intent = new Intent(MainActivity.this, PersonDetailsActivity.class);
-                intent.putExtra("detail", persons.get(i));
-                startActivity(intent);
+                } else {
+                    Intent intent = new Intent(MainActivity.this, PersonDetailsActivity.class);
+                    intent.putExtra("detail", persons.get(i));
+                    startActivity(intent);
+                }
             }
         });
 
@@ -71,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(intent, Constants.INTENT_REQUEST_CODE_ADD_USER);
             }
         });
+        mIsDualPane = getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE;//detailView != null && detailView.getVisibility() == View.VISIBLE;
 
     }
 
