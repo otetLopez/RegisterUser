@@ -28,6 +28,7 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:layout_gravity="center"
         android:textSize="13sp"
         android:layout_marginTop="50dp"
         android:hint="Name"/>
@@ -37,6 +38,7 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:layout_gravity="center"
         android:textSize="13sp"
         android:layout_marginTop="10dp"
         android:hint="Email"/>
@@ -46,6 +48,7 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:layout_gravity="center"
         android:textSize="13sp"
         android:inputType="number"
         android:layout_marginTop="10dp"
@@ -55,6 +58,7 @@
         android:id="@+id/btn_add"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:background="#2E8B57"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
