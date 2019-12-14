@@ -15,6 +15,7 @@ import android.widget.Toast;
 public class VerificationActivity extends AppCompatActivity {
     int[] images = Constants.Images;
     ImgAdapter iconAdapter;
+    boolean isChecked = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,15 +27,17 @@ public class VerificationActivity extends AppCompatActivity {
 
         GridView gridView = findViewById(R.id.gridView);
         iconAdapter = new ImgAdapter(this);
-
         setImages();
 
-        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(VerificationActivity.this, "You clicked on " + iconAdapter.getItem(position), Toast.LENGTH_SHORT).show();
-            }
-        });
+//        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                Toast.makeText(VerificationActivity.this, "You clicked on " + iconAdapter.getItem(position), Toast.LENGTH_SHORT).show();
+//                //ImageView img = (ImageView) view;
+//                //img.setImageResource(R.drawable.checked);
+//                //img.setBackgroundResource((Integer) iconAdapter.getItem(position));
+//            }
+//        });
 
         final CheckBox check = findViewById(R.id.checkbox);
 
