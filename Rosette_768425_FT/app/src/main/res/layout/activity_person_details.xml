@@ -9,36 +9,10 @@
     android:background="#FFFFFF"
     tools:context=".PersonDetailsActivity">
 
-    <ImageView
-        android:id="@+id/detail_img"
-        android:layout_width="100dp"
-        android:layout_marginTop="50dp"
-        android:layout_gravity="center"
-        android:layout_height="100dp"/>
-
-    <TextView
-        android:id="@+id/detail_name"
+    <fragment
+        android:id="@+id/details_frag"
+        android:name="com.f19.rosette_768425_ft.PersonDetailsFragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:gravity="center"
-        android:text="Name"
-        android:textSize="20dp"/>
-
-    <TextView
-        android:id="@+id/detail_email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:gravity="center"
-        android:text="Email"/>
-
-    <TextView
-        android:id="@+id/detail_num"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:gravity="center"
-        android:text="Number"/>
+        android:layout_height="match_parent" />
 
 </LinearLayout>
