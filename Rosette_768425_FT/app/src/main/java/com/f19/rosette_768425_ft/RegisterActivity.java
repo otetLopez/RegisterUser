@@ -1,5 +1,6 @@
 package com.f19.rosette_768425_ft;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,6 +11,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class RegisterActivity extends AppCompatActivity {
+
+    Person person;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,14 +32,33 @@ public class RegisterActivity extends AppCompatActivity {
                 else {
                     // Get image
                     Constants constant = new Constants();
-                    Person person = new Person(name.getText().toString(),email.getText().toString(), Long.valueOf(phone.getText().toString()),
+                    person = new Person(name.getText().toString(),email.getText().toString(), Long.valueOf(phone.getText().toString()),
                             Constants.Icons[constant.getRandom(Constants.ICON_COUNT)]);
                     Intent intent = new Intent(RegisterActivity.this, VerificationActivity.class);
                     intent.putExtra("detail", person);
-                    startActivity(intent);
+                    //intent.addFlags(Intent.FLAG_ACTIVITY_FORWARD_RESULT);
+                    //startActivity(intent);
+                    //finish();
+                    startActivityForResult(intent, Constants.INTENT_REQUEST_CODE_VERIFY_USER);
                 }
 
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == Constants.INTENT_REQUEST_CODE_VERIFY_USER) {
+            if(resultCode == RESULT_OK) {
+                //if(person != null) {
+                    Intent returnIntent = new Intent();
+                    returnIntent.putExtra("addNew", person);
+                    setResult(MainActivity.RESULT_OK, returnIntent);
+                    finish();
+               // }
+            }
+
+        }
     }
 }

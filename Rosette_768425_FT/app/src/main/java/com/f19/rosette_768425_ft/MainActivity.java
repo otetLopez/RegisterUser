@@ -1,5 +1,6 @@
 package com.f19.rosette_768425_ft;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -37,24 +38,14 @@ public class MainActivity extends AppCompatActivity {
             persons.add(p5);
         }
 
-        Intent intent = getIntent();
-        if(intent.getExtras() != null)
-        {
-            Person person = (Person) intent.getExtras().get("addNew");
-            if (person != null)
-                persons.add(person);
-        }
-
-//       // if(flag == true) {
-//            Intent intent = getIntent();
-//            if(intent.getFlags() == Intent.FLAG_ACTIVITY_NEW_TASK) {
-//            if (intent != null) {
+//        Intent intent = getIntent();
+//        if(intent.getExtras() != null)
+//        {
 //            Person person = (Person) intent.getExtras().get("addNew");
 //            if (person != null)
 //                persons.add(person);
-//
-//            flag = false;
-//            } }
+//        }
+
 
         updateList();
         ListView listView = findViewById(R.id.list_names);
@@ -76,11 +67,27 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 flag = true;
                 Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
-                startActivity(intent);
-                //startActivityForResult(intent, Constants.INTENT_REQUEST_CODE_ADD_USER);
+                //startActivity(intent);
+                startActivityForResult(intent, Constants.INTENT_REQUEST_CODE_ADD_USER);
             }
         });
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == Constants.INTENT_REQUEST_CODE_ADD_USER) {
+            if(data.getExtras() != null)
+            {
+                Person person = (Person) data.getExtras().get("addNew");
+                if (person != null) {
+                    persons.add(person);
+                    updateList();
+                }
+            }
+
+        }
     }
 
     private void updateList() {

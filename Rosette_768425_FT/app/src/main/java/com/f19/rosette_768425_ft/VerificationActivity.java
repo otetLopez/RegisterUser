@@ -42,10 +42,13 @@ public class VerificationActivity extends AppCompatActivity {
                 if(!check.isChecked()) {
                     Toast.makeText(VerificationActivity.this, "You are a robot", Toast.LENGTH_SHORT).show();
                 } else {
-                    Intent intent_add = new Intent(VerificationActivity.this, MainActivity.class);
-                    intent_add.putExtra("addNew", person);
-                    intent_add.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(intent_add);
+//                    Intent intent_add = new Intent(VerificationActivity.this, MainActivity.class);
+//                    intent_add.putExtra("addNew", person);
+//                    startActivity(intent_add);
+//                    finish();
+                    Intent returnIntent = new Intent();
+                    //returnIntent.putExtra("addNew",person);
+                    setResult(RegisterActivity.RESULT_OK,returnIntent);
                     finish();
                 }
             }
