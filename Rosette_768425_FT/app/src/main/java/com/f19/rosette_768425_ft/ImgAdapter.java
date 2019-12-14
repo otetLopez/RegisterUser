@@ -63,9 +63,11 @@ public class ImgAdapter extends BaseAdapter {
                 if(imgState[position] == -1) {
                     imageView.setImageResource(R.drawable.checked);
                     imageView.setBackgroundResource(imageIcons[position]);
+                    imageView.animate().alpha(0.5f);
                     imgState[position]=position;
                 } else {
                     imageView.setImageResource(imageIcons[position]);
+                    imageView.animate().alpha(1f);
                     imgState[position]=-1;
                 }
             }
