@@ -45,18 +45,12 @@ public class VerificationActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!check.isChecked()) {
-                    Toast.makeText(VerificationActivity.this, "You are a robot", Toast.LENGTH_SHORT).show();
-                } else {
-//                    Intent intent_add = new Intent(VerificationActivity.this, MainActivity.class);
-//                    intent_add.putExtra("addNew", person);
-//                    startActivity(intent_add);
-//                    finish();
+                if(check.isChecked() && iconAdapter.checkAnswer()) {
                     Intent returnIntent = new Intent();
-                    //returnIntent.putExtra("addNew",person);
                     setResult(RegisterActivity.RESULT_OK,returnIntent);
                     finish();
-                }
+                } else
+                    Toast.makeText(VerificationActivity.this, "You are a robot", Toast.LENGTH_SHORT).show();
             }
         });
 
