@@ -46,11 +46,15 @@ public class VerificationActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(check.isChecked() && iconAdapter.checkAnswer()) {
+                    CustomDialog d = new CustomDialog(VerificationActivity.this, Constants.INPUT_VERIFIED);
+                    d.show();
+                } else {
+                    CustomDialog d = new CustomDialog(VerificationActivity.this, Constants.INPUT_NOT_VERIFIED);
+                    d.show();
                     Intent returnIntent = new Intent();
                     setResult(RegisterActivity.RESULT_OK,returnIntent);
-                    finish();
-                } else
-                    Toast.makeText(VerificationActivity.this, "You are a robot", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(VerificationActivity.this, "You are a robot", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -69,5 +73,11 @@ public class VerificationActivity extends AppCompatActivity {
         images = Constants.RandomizeArray(Constants.Images);
         iconAdapter.setImageIcons(images);
         gridView.setAdapter(iconAdapter);
+    }
+
+    public void verified()  {
+        Intent returnIntent = new Intent();
+        setResult(RegisterActivity.RESULT_OK,returnIntent);
+        finish();
     }
 }

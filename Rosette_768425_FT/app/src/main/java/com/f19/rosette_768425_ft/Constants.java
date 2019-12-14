@@ -20,6 +20,9 @@ public class Constants {
             R.drawable.icon01_21,R.drawable.icon01_22,R.drawable.icon01_23,R.drawable.icon01_24,R.drawable.icon01_25,
             R.drawable.icon01_26,R.drawable.icon01_27,R.drawable.icon01_28,R.drawable.icon01_29,R.drawable.icon01_30};
 
+    public final static String INPUT_VERIFIED = "Verified";
+    public final static String INPUT_NOT_VERIFIED = "Not Verified";
+
     public int getRandom(int max) {
         Random randnum = new Random();
         return randnum.nextInt(max-1);
