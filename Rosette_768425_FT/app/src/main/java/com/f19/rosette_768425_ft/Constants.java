@@ -4,7 +4,7 @@ package com.f19.rosette_768425_ft;
 import java.util.Random;
 
 public class Constants {
-    public final static boolean ENABLE_DEBUG = true;
+    public final static boolean ENABLE_DEBUG = false;
     public final static int INTENT_REQUEST_CODE_ADD_USER = 1;
     public final static int INTENT_REQUEST_CODE_VERIFY_USER = 2;
     public final static int ICON_COUNT = 30;

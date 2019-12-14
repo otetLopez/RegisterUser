@@ -48,11 +48,14 @@ public class VerificationActivity extends AppCompatActivity {
                 if(check.isChecked() && iconAdapter.checkAnswer()) {
                     CustomDialog d = new CustomDialog(VerificationActivity.this, Constants.INPUT_VERIFIED);
                     d.show();
-                } else {
-                    CustomDialog d = new CustomDialog(VerificationActivity.this, Constants.INPUT_NOT_VERIFIED);
-                    d.show();
+
                     Intent returnIntent = new Intent();
                     setResult(RegisterActivity.RESULT_OK,returnIntent);
+                } else {
+
+                    CustomDialog d = new CustomDialog(VerificationActivity.this, Constants.INPUT_NOT_VERIFIED);
+                    d.show();
+
                     //Toast.makeText(VerificationActivity.this, "You are a robot", Toast.LENGTH_SHORT).show();
                 }
             }

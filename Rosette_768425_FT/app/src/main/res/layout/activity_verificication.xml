@@ -8,6 +8,7 @@
     tools:context=".VerificationActivity">
 
     <TextView
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Select the traffic lights"
@@ -19,7 +20,7 @@
     <GridView
         android:id="@+id/gridView"
         android:layout_gravity="center"
-        android:layout_width="300dp"
+        android:layout_width="360dp"
         android:layout_height="wrap_content"
         android:horizontalSpacing="0dp"
         android:verticalSpacing="0dp"

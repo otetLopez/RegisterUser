@@ -25,7 +25,7 @@
 
     <EditText
         android:id="@+id/reg_name"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textSize="13sp"
@@ -34,7 +34,7 @@
 
     <EditText
         android:id="@+id/reg_email"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textSize="13sp"
@@ -43,7 +43,7 @@
 
     <EditText
         android:id="@+id/reg_phone"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textSize="13sp"
@@ -53,7 +53,7 @@
 
     <Button
         android:id="@+id/btn_add"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:background="#2E8B57"
         android:layout_marginTop="10dp"

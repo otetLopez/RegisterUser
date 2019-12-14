@@ -106,8 +106,10 @@ public class MainActivity extends AppCompatActivity {
 //            personLists.add(newPerson);
 //
 //        }
-        CustomAdapter customAdapter = new CustomAdapter(MainActivity.this, persons);
-        listView.setAdapter(customAdapter);
+        if(persons.size() > 0) {
+            CustomAdapter customAdapter = new CustomAdapter(MainActivity.this, persons);
+            listView.setAdapter(customAdapter);
+        }
 
     }
 }
