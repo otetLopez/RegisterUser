@@ -41,6 +41,7 @@
             android:layout_marginRight="150dp" />
 
         <ImageView
+            android:id="@+id/img_verify"
             android:layout_width="15dp"
             android:layout_height="15dp"
             app:srcCompat="@drawable/refresh"/>

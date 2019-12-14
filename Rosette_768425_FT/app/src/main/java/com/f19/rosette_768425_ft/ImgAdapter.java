@@ -17,6 +17,19 @@ public class ImgAdapter extends BaseAdapter {
         this.imageIcons = imageIcons;
     }
 
+    public int[] getImageIcons() {
+        return imageIcons;
+    }
+
+    public void setImageIcons(int[] imageIcons) {
+        this.imageIcons = imageIcons;
+    }
+
+    public ImgAdapter(Context context) {
+        this.context = context;
+
+    }
+
     @Override
     public int getCount() {
         return imageIcons.length;

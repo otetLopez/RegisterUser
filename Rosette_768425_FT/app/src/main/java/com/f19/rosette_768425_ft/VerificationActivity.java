@@ -9,9 +9,12 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 public class VerificationActivity extends AppCompatActivity {
+    int[] images = Constants.Images;
+    ImgAdapter iconAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,10 +25,9 @@ public class VerificationActivity extends AppCompatActivity {
         final Person person = (Person) intent.getExtras().get("detail");
 
         GridView gridView = findViewById(R.id.gridView);
+        iconAdapter = new ImgAdapter(this);
 
-        final int[] images = Constants.RandomizeArray(Constants.Images);
-        final ImgAdapter iconAdapter = new ImgAdapter(this, images);
-        gridView.setAdapter(iconAdapter);
+        setImages();
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -55,5 +57,20 @@ public class VerificationActivity extends AppCompatActivity {
             }
         });
 
+        ImageView imageView = findViewById(R.id.img_verify);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setImages();
+            }
+        });
+
+    }
+
+    private void setImages() {
+        GridView gridView = findViewById(R.id.gridView);
+        images = Constants.RandomizeArray(Constants.Images);
+        iconAdapter.setImageIcons(images);
+        gridView.setAdapter(iconAdapter);
     }
 }
