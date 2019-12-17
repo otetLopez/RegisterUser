@@ -19,19 +19,7 @@ public class PersonDetailsActivity extends AppCompatActivity {
         Person person = (Person) intent.getExtras().get("detail");
 
         PersonDetailsFragment descriptionFragment = (PersonDetailsFragment) getSupportFragmentManager().findFragmentById(R.id.details_frag);
-        Intent intent_frag = getIntent();
-        int id = intent.getExtras().getInt("detail");
-        descriptionFragment.displayDetails(id, person);
-
-//        ImageView imageView = findViewById(R.id.detail_img);
-//        TextView name = findViewById(R.id.detail_name);
-//        TextView email = findViewById(R.id.detail_email);
-//        TextView phone = findViewById(R.id.detail_num);
-//
-//        imageView.setImageResource(person.getImg());
-//        name.setText(person.getName());
-//        email.setText(person.getEmail());
-//        phone.setText(String.valueOf(person.getPhone()));
+        descriptionFragment.displayDetails(person);
 
     }
 }

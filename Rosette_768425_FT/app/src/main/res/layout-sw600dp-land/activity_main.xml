@@ -6,15 +6,15 @@
     android:layout_height="match_parent">
 
     <fragment
-        android:id="@+id/position_frag"
+        android:id="@+id/main_frag"
         android:name="com.f19.rosette_768425_ft.MainFragment"
-        android:layout_width="200dp"
+        android:layout_width="400dp"
         android:layout_height="match_parent" />
     <fragment
+        android:id="@+id/details_frag"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:name="com.f19.rosette_768425_ft.PersonDetailsFragment"
-        tools:layout="@layout/fragment_person_details"
-        android:id="@+id/description_frag" />
+        tools:layout="@layout/fragment_person_details" />
 
 </LinearLayout>

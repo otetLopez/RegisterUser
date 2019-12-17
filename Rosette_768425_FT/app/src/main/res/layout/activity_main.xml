@@ -4,26 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingTop="5dp"
-    android:paddingBottom="5dp"
-    android:paddingLeft="20dp"
-    android:paddingRight="20dp"
-    android:background="#FFFFFF"
     tools:context=".MainActivity">
 
-    <ListView
-        android:id="@+id/list_names"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1" />
-    <Button
-        android:id="@+id/btn_add"
+    <fragment
+        android:id="@+id/main_frag"
+        android:name="com.f19.rosette_768425_ft.MainFragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#2E8B57"
-        android:layout_marginBottom="10dp"
-        android:text="ADD" />
+        android:layout_height="match_parent" />
+
+<!--    <ListView-->
+<!--        android:id="@+id/list_names"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_weight="1" />-->
+<!--    <Button-->
+<!--        android:id="@+id/btn_add"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="#2E8B57"-->
+<!--        android:layout_marginBottom="10dp"-->
+<!--        android:text="ADD" />-->
 
 
 

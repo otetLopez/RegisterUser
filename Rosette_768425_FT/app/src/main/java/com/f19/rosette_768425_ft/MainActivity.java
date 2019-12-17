@@ -2,6 +2,8 @@ package com.f19.rosette_768425_ft;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -15,7 +17,7 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements Listener {
 
     ArrayList<Person> persons = new ArrayList<>();
     boolean flag = false;
@@ -40,44 +42,10 @@ public class MainActivity extends AppCompatActivity {
             persons.add(p5);
         }
 
-//        Intent intent = getIntent();
-//        if(intent.getExtras() != null)
-//        {
-//            Person person = (Person) intent.getExtras().get("addNew");
-//            if (person != null)
-//                persons.add(person);
-//        }
+        MainFragment mainFragment = (MainFragment) getSupportFragmentManager().findFragmentById(R.id.main_frag);
+        if(persons.size() > 0)
+            mainFragment.displayDetails(persons);
 
-
-        updateList();
-        ListView listView = findViewById(R.id.list_names);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Log.i("Clicked", "You clicked position " + i);
-
-                if(mIsDualPane) {
-                    PersonDetailsFragment descriptionFragment = (PersonDetailsFragment) getSupportFragmentManager().findFragmentById(R.id.description_frag);
-                    descriptionFragment.displayDetails(i, persons.get(i));
-
-                } else {
-                    Intent intent = new Intent(MainActivity.this, PersonDetailsActivity.class);
-                    intent.putExtra("detail", persons.get(i));
-                    startActivity(intent);
-                }
-            }
-        });
-
-        Button btn = findViewById(R.id.btn_add);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                flag = true;
-                Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
-                //startActivity(intent);
-                startActivityForResult(intent, Constants.INTENT_REQUEST_CODE_ADD_USER);
-            }
-        });
         mIsDualPane = getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE;//detailView != null && detailView.getVisibility() == View.VISIBLE;
 
     }
@@ -91,33 +59,24 @@ public class MainActivity extends AppCompatActivity {
                 Person person = (Person) data.getExtras().get("addNew");
                 if (person != null) {
                     persons.add(person);
-                    updateList();
                 }
             }
-
         }
     }
 
-    private void updateList() {
-        ListView listView  = findViewById(R.id.list_names);
-//        ArrayList<String> names = new ArrayList<>();
-//        for(int i=0; i<persons.size(); ++i) {
-//            names.add(persons.get(i).getName());
-//
-//        }
-        //ArrayAdapter<String> adapter = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_list_item_1, names);
-        //listView.setAdapter(adapter);
 
-//        ArrayList<Person> personLists = new ArrayList<>();
-//        for(int i=0; i<persons.size(); ++i) {
-//            PersonList newPerson = new PersonList(persons.get(i).getName(), persons.get(i).getImg());
-//            personLists.add(newPerson);
-//
-//        }
-        if(persons.size() > 0) {
-            CustomAdapter customAdapter = new CustomAdapter(MainActivity.this, persons);
-            listView.setAdapter(customAdapter);
+    @Override
+    public void onItemClick(int id) {
+        Log.i("Clicked", "You clicked position " + id);
+
+        if(mIsDualPane) {
+            PersonDetailsFragment descriptionFragment = (PersonDetailsFragment) getSupportFragmentManager().findFragmentById(R.id.details_frag);
+            descriptionFragment.displayDetails(persons.get(id));
+
+        } else {
+            Intent intent = new Intent(MainActivity.this, PersonDetailsActivity.class);
+            intent.putExtra("detail", persons.get(id));
+            startActivity(intent);
         }
-
     }
 }

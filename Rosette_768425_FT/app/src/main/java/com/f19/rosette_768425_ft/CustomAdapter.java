@@ -2,6 +2,7 @@ package com.f19.rosette_768425_ft;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.database.DataSetObserver;
 import android.media.Image;
 import android.util.Log;
@@ -14,7 +15,10 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class CustomAdapter implements ListAdapter  {
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentActivity;
+
+public class CustomAdapter extends FragmentActivity implements ListAdapter  {
     private ArrayList<Person> personLists;
     private Context context;
 
@@ -70,6 +74,8 @@ public class CustomAdapter implements ListAdapter  {
             LayoutInflater layoutInflater = LayoutInflater.from(context);
             view = layoutInflater.inflate(R.layout.list_person, null);
 
+            final View v = view;
+
             TextView textView = view.findViewById(R.id.name);
             ImageView img = view.findViewById(R.id.icon);
             TextView email = view.findViewById(R.id.email);
@@ -83,10 +89,17 @@ public class CustomAdapter implements ListAdapter  {
                 @Override
                 public void onClick(View v) {
                     Log.i("Clicked", "CustomAdapter: clicked " + person.getName() + " with " + person.getImg());
-                    Intent intent = new Intent(context, PersonDetailsActivity.class);
-                    intent.putExtra("detail", person);
-                    context.startActivity(intent);
 
+                    if(v.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+                        Log.i("Clicked", "CustomAdapter: resource is in landscape. ");
+                        PersonDetailsFragment descriptionFragment = (PersonDetailsFragment) ((AppCompatActivity) context).getSupportFragmentManager().findFragmentById(R.id.details_frag);
+                        Log.i("Clicked", "CustomAdapter: Done declaration of  PersonDetailsFragment");
+                        descriptionFragment.displayDetails(person);
+                    }  else {
+                        Intent intent = new Intent(context, PersonDetailsActivity.class);
+                        intent.putExtra("detail", person);
+                        context.startActivity(intent);
+                    }
                 }
             });
         }
