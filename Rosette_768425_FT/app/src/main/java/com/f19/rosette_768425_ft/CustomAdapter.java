@@ -90,7 +90,10 @@ public class CustomAdapter extends FragmentActivity implements ListAdapter  {
                 public void onClick(View v) {
                     Log.i("Clicked", "CustomAdapter: clicked " + person.getName() + " with " + person.getImg());
 
-                    if(v.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+                    View detailView = v.findViewById(R.id.details_frag);
+                    int width = v.getResources().getConfiguration().smallestScreenWidthDp;
+                    Log.i("Clicked", "The screen has " + width);
+                    if((v.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) && width >= 600) {
                         Log.i("Clicked", "CustomAdapter: resource is in landscape. ");
                         PersonDetailsFragment descriptionFragment = (PersonDetailsFragment) ((AppCompatActivity) context).getSupportFragmentManager().findFragmentById(R.id.details_frag);
                         Log.i("Clicked", "CustomAdapter: Done declaration of  PersonDetailsFragment");

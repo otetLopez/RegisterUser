@@ -42,6 +42,11 @@ public class MainActivity extends AppCompatActivity implements Listener {
             persons.add(p5);
         }
 
+        if(savedInstanceState!=null){
+            persons = (ArrayList<Person>) savedInstanceState.getSerializable("data");
+        }
+
+
         MainFragment mainFragment = (MainFragment) getSupportFragmentManager().findFragmentById(R.id.main_frag);
         if(persons.size() > 0)
             mainFragment.displayDetails(persons);
@@ -79,4 +84,12 @@ public class MainActivity extends AppCompatActivity implements Listener {
             startActivity(intent);
         }
     }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putSerializable("data", persons);
+    }
+
+
 }
